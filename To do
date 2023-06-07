@@ -1,0 +1,15 @@
+To do
+1. CRUD Elections
+    must have a "win condition"
+    must belong to a DID
+2. Search for Elections 
+    search by name
+    nice to have: search by Verifiable credential
+3. Select/show Election
+4. Cast a ballot(vote)
+    Authorize voter by requesting presentation of Verifiable credential
+    Cast vote 
+5. Count votes
+    Let's just display the current vote count on the Election for now
+6. Verify votes were counted according to the rules
+    ...not sure how to do this yet, but I'm imagining something like a block explorer

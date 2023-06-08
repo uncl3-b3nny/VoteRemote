@@ -50,6 +50,7 @@ app.post('/vote', async(req, res) => {
 app.get('/', (req, res) => {
   res.render('index', { voteCount });
 });
+app.use(express.static(__dirname+'/public'));
 
 app.listen(3000, () => {
   console.log('Voting application server is running on port 3000');

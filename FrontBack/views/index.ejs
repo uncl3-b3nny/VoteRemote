@@ -5,6 +5,20 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-image: url('/images/pizza.jpeg'); /* Replace 'pizza.jpg' with the path to your pizza image */
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 50px;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
     }
     .error-message {
       color: red;
@@ -12,6 +26,7 @@
   </style>
 </head>
 <body>
+  <div class="container">
   <h1>Does pineapple belong on pizza?</h1>
   <input type="text" id="VC" placeholder="Enter your Voting Credentials">
   <div>
@@ -28,7 +43,7 @@
   <p>No: <span id="voteNoCount"></span></p>
   <p>Vote count: <span id="voteCount"><%= voteCount %></span></p>
 
-
+  </div>
   <script>
     // Send vote request to the server
     function vote() {

@@ -1,16 +1,25 @@
-To do
-1. CRUD Elections
-    must have a "win condition"
-    must belong to a DID
-    use mongoDB to get this working, then move to fully decentralized (probably IPFS) after.
-2. Search for Elections 
-    search by name
-    nice to have: search by Verifiable credential
-3. Select/show Election
-4. Cast a ballot(vote)
-    Authorize voter by requesting presentation of Verifiable credential
-    Cast vote 
-5. Count votes
-    Let's just display the current vote count on the Election for now
-6. Verify votes were counted according to the rules
-    ...not sure how to do this yet, but I'm imagining something like a block explorer
+Edit
+I don't think we need all the stuff we talked about yesterday to start. We just need 
+1. something to vote on, not necessarily the ability to create more of them, and 
+2. the ability to cast & count votes, not the ability search & select elections.
+
+If we can cast and count votes, we can prove whether votes were counted as expected.
+
+To do - Next: When someone clicks submit, I want to request a verifiable presentation of their VC
+
+// To do
+// 1. CRUD Elections
+//     must have a "win condition"
+//     must belong to a DID
+//     use mongoDB to get this working, then move to fully decentralized (probably IPFS) after.
+// 2. Search for Elections 
+//     search by name
+//     nice to have: search by Verifiable credential
+// 3. Select/show Election
+// 4. Cast a ballot(vote)
+//     Authorize voter by requesting presentation of Verifiable credential
+//     Cast vote 
+// 5. Count votes
+//     Let's just display the current vote count on the Election for now
+// 6. Verify votes were counted according to the rules
+//     ...not sure how to do this yet, but I'm imagining something like a block explorer

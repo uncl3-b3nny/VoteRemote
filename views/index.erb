@@ -1,6 +1,10 @@
 <p>Does pineapple belong on pizza?</p>
 
 <form action='cast' method='post'>
+  <div class="input-field col s6">
+     <input id="vcInput" name="signedVC" type="text">
+     <label for="vcInput"> <--Enter your Pizza Lovers Verifiable credential here</label>
+  </div>
   <ul>
     <% CHOICES.each do |id, text| %>
       <li>

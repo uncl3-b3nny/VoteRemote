@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voting Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .error-message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Does pineapple belong on pizza?</h1>
+  <input type="text" id="VC" placeholder="Enter your Voting Credentials">
+  <div>
+    <label for="voteYes">Yes</label>
+    <input type="radio" name="vote" id="voteYes" value="yes">
+    <label for="voteNo">No</label>
+    <input type="radio" name="vote" id="voteNo" value="no">
+  </div>
+
+  <button id="voteButton">Vote</button>
+
+  <h2>Vote Results</h2>
+  <p>Yes: <span id="voteYesCount"></span></p>
+  <p>No: <span id="voteNoCount"></span></p>
+  <p>Vote count: <span id="voteCount"><%= voteCount %></span></p>
+
+
+  <script>
+    // Send vote request to the server
+    function vote() {
+      const voterCredentials = document.getElementById('VC').value;
+      if (!voterCredentials) {
+        alert('Please enter your voting credential');
+        return;
+      }
+
+      const voteValue = document.querySelector('input[name="vote"]:checked').value;
+      if (!voteValue) {
+        alert('Please select your vote (Yes or No)');
+        return;
+      }
+
+      fetch('/vote', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ credential: voterCredentials , voteValue: voteValue})
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === 0){
+            alert('You are not allowed to vote on this, Please enter a valid verifiable pizza voting credential');
+          return;
+          }else{
+            updateVoteCount(); // Update the vote count after voting
+          }
+        
+        })
+        .catch(error => {
+          console.log('Error:', error);
+          alert('you are not allowed to vote on this');
+          return;
+        });
+    }
+    // Add event listener to the vote button
+    document.getElementById('voteButton').addEventListener('click', vote);
+
+    // Initial vote count update
+    function updateVoteCount() {
+      fetch('/vote/count')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('voteCount').textContent = data.count;
+          document.getElementById('voteYesCount').textContent = data.yesCount;
+          document.getElementById('voteNoCount').textContent = data.noCount;
+        })
+        .catch(error => {
+          console.log('Error:', error);
+          displayErrorMessage('Failed to fetch vote count.'); // Display error message
+        });
+    }
+    updateVoteCount();
+
+        // Display error message on the page
+        function displayErrorMessage(message) {
+     // document.getElementById('errorMessage').textContent = message;
+    }
+
+    // Clear error message on the page
+    function clearErrorMessage() {
+   //   document.getElementById('errorMessage').textContent = '';
+    }
+
+  </script>
+</body>
+</html>

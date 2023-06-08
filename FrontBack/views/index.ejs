@@ -12,8 +12,8 @@
     .container {
       background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
-      max-width: 400px;
-      margin: 0 auto;
+      max-width: 600px;
+      margin: 5px auto;
       margin-top: 50px;
       border-radius: 10px;
     }
@@ -28,16 +28,18 @@
 <body>
   <div class="container">
   <h1>Does pineapple belong on pizza?</h1>
-  <input type="text" id="VC" placeholder="Enter your Voting Credentials">
+  <input type="text" id="VC" placeholder="VC"> <---Enter Your verifiable credential here
   <div>
+    <br>
     <label for="voteYes">Yes</label>
     <input type="radio" name="vote" id="voteYes" value="yes">
+    <br><br>
     <label for="voteNo">No</label>
     <input type="radio" name="vote" id="voteNo" value="no">
   </div>
-
+<br>
   <button id="voteButton">Vote</button>
-
+<br><br><br>
   <h2>Vote Results</h2>
   <p>Yes: <span id="voteYesCount"></span></p>
   <p>No: <span id="voteNoCount"></span></p>
